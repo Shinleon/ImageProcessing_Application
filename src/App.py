@@ -63,11 +63,9 @@ class MainApplication(tk.Frame):
         k = self.settings_frame.getScales()
         temp = self.app_state[CONST.ARR][CONST.ORIGINAL_IMG].astype(
             np.float32
-        ) + cv2.Sobel(
+        ) + cv2.Laplacian(
             self.app_state[CONST.ARR][CONST.ORIGINAL_IMG],
             cv2.CV_32F,
-            dx=1,
-            dy=1,
             ksize=k[0],
         )
         self.app_state[CONST.ARR][CONST.MODIFIED_IMG] = temp.astype(np.uint8)
